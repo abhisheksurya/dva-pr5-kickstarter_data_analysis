@@ -1,0 +1,5 @@
+*.sav
+*coded.csv
+*.p
+*.out
+__pycache__

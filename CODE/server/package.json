@@ -1,0 +1,28 @@
+{
+  "name": "dva-fall-2018-team48-project",
+  "version": "1.0.0",
+  "description": "Team 48 Project - Data & Visual Analytics - Fall 2018",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prime_model": "cd model && gmake || make",
+    "prepare": "npm run prime_model"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.gatech.edu:DVA-TeamProject/dva-fall-2018-teamproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "child-process-promise": "^2.2.1",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.0.0",
+    "promise": "^8.0.2",
+    "tmp-promise": "^1.0.5"
+  }
+}

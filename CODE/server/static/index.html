@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Kickstarter Campaigns Success Predictor</title>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+        <script type="text/javascript" src="js/jq.js"></script>
+        <style type="text/css" >
+            .container{
+                position: relative;
+                text-align: center;
+                color: black;
+            }
+            .centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #ffffff;
+                border: 1px darkgreen;
+                opacity: 0.6;
+                filter: alpha(opacity=60); /* For IE8 and earlier */
+            }
+            * {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container-fluid">
+      <a name="top"></a>
+      <h1>DETERMINING KICKSTARTER PROJECT SUCCESS</h1>
+      <p id="description">This application predicts kickstarter campaigns success or failure and visually displays
+        the main factors that drive success for the project.
+
+        What is a successful campaign?
+        It is a campaign that achieves the funding goal within targeted time frame.
+
+        What is considered in the prediction?
+        Several variables like: project main and sub category, number of backers, country where project is launched,
+        pledge amount, currency, funding goal, spotlight used, etc.
+        Big dataset: data from more than 180 thousand projects was used to train predictor model
+
+      </p>
+
+      <p id="titleVis1"><h2>Kickstarter Historical Statistics</h2></p>
+      <p id="describeVis1">
+        It's challenging to run a successful campaign.
+        As a first step, we prepared this stacked-bar chart with statistics from the last 10 years of kickstarter campaigns.
+        We are sure you will find interesting information here.
+
+        Feel free to use the filters and get more information hovering over the bars, it is interactive!
+      </p>
+
+      <div id="visual1">
+        <script type="text/javascript" src="https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js"></script>
+        <div class='container tableauPlaceholder' style='width: 1416px; height: 672px;'>
+          <object class='tableauViz' width='1416' height='672' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='&#47;t&#47;team48site' />
+            <param name='name' value='Visualization1&#47;Sheet1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='showAppBanner' value='false' />
+            <param name='filter' value='iframeSizedToWindow=true' />
+          </object>
+        </div>
+      </div>
+
+      <div class="container" style="background-image:url('img/banknote.jpg');padding:5px;width:1400px;height:600px;border:1px white;">
+        <div class="centered" id="instructions" >
+        <h1>Ready to use the predictor?</h1>
+
+          <p><h2>Follow these steps:</h2></p>
+          <p><h3>1. Download the input file template clicking on the button "download template"</h3></p>
+          <p><h3>2. Enter your Kickstarter campaign data to the template and save it.</h3></p>
+          <p>NOTE: Make sure you respect the format of the template. Do NOT modify cells
+        you are not requested to modify, otherwise it won't pass the validation.</p>
+          <p><h3>3. Upload updated template by clicking the button "upload"</h3></p>
+          <p><h3>4. Run the prediction clicking on button "get results"</h3></p>
+          <p><h3>5. Wait for the predictor to run. Once it's finished, the application will load results below</h3></p>
+          <p><h2><a href="csv/userInputTemplate.csv" download>"Download template"</a></h2></p>
+        <form enctype="multipart/form-data" method="post">
+          <input name="inputFile" type="file" accept=".csv" />
+          <button type="button" value="upload">Upload</button>
+        </form>
+        <progress value="0" max="100" style="width:300px;"/>
+        </div>
+
+      </div>
+
+      <div id="Resulttitle"><h2>Predictor Results!</h2></div>
+      <div id="Resultdescription">A machine learning engine previously trained with a big dataset just
+        ran in the background this time using the inputs you just loaded.
+        The purpose is to compare the current features of your project with the features of
+        similar projects that appeared to lead to success.
+      </div>
+      <div id="titleVis2"><h3>Recommendations from prediction</h3></div>
+
+      <div id="describeVis2">Based on the model results and your project features, we recommend you do
+        the following changes to your campaign to increase its probability of success:
+      </div>
+
+      <div id="visual2">
+        <header>
+          <h3>Campaign Improvement Suggestions</h3>
+          <p>This graph illustrates the current campaign features
+            and the suggestions based on the prediction you just ran.
+            Feel free to hover over the slopes and use selection buttons at the bottom to highlight particular features.
+          </p>
+          <p>- Campaign: the feature values from the project you have uploaded</p>
+          <p>- Feedback: the suggested values generated from the prediction ran</p>
+        </header>
+        <section id="slopegraph"></section>
+        <footer>
+          <button id="reset">reset</button>
+          <nav id='nav-alt'></nav>
+        </footer>
+        <!-- namespace -->
+        <script> d3.eesur = {}; </script>
+        <!-- reusable slopegraph -->
+        <script src="js/d3_code_slopegraph.js"></script>
+        <script src="js/render_d3.js"></script>
+      </div>
+
+      <div id="titleVis3">
+        <h2>Most influential attributes with data from prediction</h2></div>
+        <img id="vis3"></img>
+
+      <div id="visual3"></div>
+
+      <div id="GoOnTopButton">
+
+        <a href="#top">Back to top of page</a>
+
+      </div>
+
+      <div id="projectOverview"> </div>
+      <h2>Project Overview</h2>
+      <a href="https://github.gatech.edu/DVA-TeamProject/dva-fall-2018-teamproject" open>"Source code on Github (private - contact contributor to request access)"</a>
+
+      <div id="credits">
+        <h2>Credits</h2>
+        <div id="contributors">
+          <h3>Contributors:</h3>
+          Rashmi Raju - rraju6@gatech.edu</br>
+          Bui Thi Thu Giang - gbui8@gatech.edu</br>
+          Fernanda Tello - mtello3@gatech.edu</br>
+          Tim Dufala - tdufala3@gatech.edu</br>
+          Abhishek Surya - asurya6@gatech.edu
+        </div>
+
+        <div id="CreditToProjectResources">
+          <h3>Credits to project resources:</h3>
+          Dataset - https://webrobots.io/kickstarter-datasets/</br>
+          Slopegraph - http://bl.ocks.org/eesur/a4679ee453aa9357977c/
+        </div>
+        <div id="imageCreditText">
+          <h3>Image credits:</h3>
+          http://www.trbimg.com/img-58643814/turbine/ct-equity-crowdfunding-2016-predictions-bsi-20-001/750/750x422</br>
+          http://d3gtswiihfkcji.cloudfront.net/uploads/2015/08/26114145/Crowdfunding-1-e1440585730897.jpg</br>
+          https://c1cleantechnicacom-wpengine.netdna-ssl.com/files/2016/11/equity-crowdfunding-2.jpg</br>
+          https://c1cleantechnicacom-wpengine.netdna-ssl.com/files/2016/11/bigstock-Business-People-Group-Crowd-Fu-89251451.jpg
+        </div>
+      </div>
+    </div> <!-- container -->
+    </body>
+</html>
