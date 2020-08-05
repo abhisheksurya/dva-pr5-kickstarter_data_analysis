@@ -21,7 +21,7 @@
     "babel-register": "^6.26.0",
     "child-process-promise": "^2.2.1",
     "express": "^4.16.4",
-    "express-fileupload": "^1.0.0",
+    "express-fileupload": "^1.1.9",
     "promise": "^8.0.2",
     "tmp-promise": "^1.0.5"
   }
